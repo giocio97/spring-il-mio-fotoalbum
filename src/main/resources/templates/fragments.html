@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>fragments</title>
+</head>
+<body>
+	<!-- HEAD -->
+	<th:block th:fragment="head">
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+		
+		<!--  CSS -->
+		 <link rel="stylesheet" th:href="@{/css/application.css}">
+		 
+		 <!-- font-awesome -->
+		 <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.3.0/css/all.min.css} "/>
+	</th:block>
+	
+	<!-- Bootstrap Javascript -->
+	<div th:fragment="script">
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<th:block th:replace="~{fragments :: head}"></th:block>
+<title></title>
+</head>
+<body>
+	
+		
+		<div class="container d-flex justify-content-center  ">
+		
+			<div class="card " style="width: 40rem;">
+		 		 <img th:src="${foto.getUrlFoto()}" class="card-img-top" alt="pizza">
+		  		<div class="card-body">
+		    		<h5 th:text="${foto.getTitolo()}" class="card-title"></h5>
+		    		
+		  		</div>
+		  		<ul class="list-group list-group-flush">
+		  			<li th:text="${foto.getDescrizione()}" class="list-group-item"></li>
+		    		<li th:text="${foto.getTag()}" class="list-group-item"></li>
+		    	
+		    
+		  		</ul>
+	  
+			</div>
+			
+			
+		</div>
+		
+		
+		
+		
+		
+		
+
+
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

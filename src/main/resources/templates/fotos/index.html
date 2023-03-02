@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<th:block th:replace="~{fragments :: head}"></th:block>
+<title>elenco foto</title>
+</head>
+<body>
+
+<div class="container">
+		
+		
+		
+    	
+    	<form method="GET" action="" class="row d-flex justify-content-center " style="padding:10px; margin:10px; ">
+ 
+		  <div class="col-auto ">
+		    <input type="text" class="form-control" id="titolo" name="titolo" placeholder="Inserire titolo foto">
+		  </div>
+		  <div class="col-auto">
+		   <input class="btn btn-outline-secondary" type="submit" value="Invia">
+		  </div>
+		</form>
+		
+		
+
+
+
+
+<table class="table table-hover align-middle container">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">titolo</th>
+      <th scope="col">descrizione</th>
+      <th scope="col">Foto</th>
+       <th scope="col">tag</th>
+       <th scope="col">visibile</th>
+       <th> <a th:href="@{/foto/create}" style="color: white;"><i class="fa-solid fa-plus"></i></a></th>
+       <th></th>
+    </tr>
+  </thead>
+  
+  <tbody class="table-group-divider">
+  
+  
+  <tr th:each ="foto: ${elencoFoto}">
+      <th scope="row"> <a th:text="${foto.id}" th:href="@{/foto/{id}(id=${foto.getId()})}"></a>   </th>
+      <td th:text="${foto.titolo}">  </td>
+      <td th:text="${foto.descrizione}" ></td>
+      <td><img th:src="@{${foto.urlFoto}}" width="100"></td>
+      <td th:text="${foto.tag}"></td>
+      <td th:text="${foto.visibile}"></td>
+      <td>
+				<form action="#" th:action="@{'/foto/delete/{id}'(id=${foto.id})}" method="post">
+					<button class="btn btn-outline-danger" type="submit" id="submitButton">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				
+				</form>
+				</td>
+				<td>
+				<a class="btn btn-outline-secondary" th:href="@{/foto/edit/{id}(id=${foto.id})}"> <i class="fa-regular fa-pen-to-square"></i> </a>
+				</td>
+      	
+      	
+      	
+    </tr>
+  
+    
+    
+   
+  </tbody>
+  
+ 
+</table>
+
+
+
+
+
+</div>
+</body>
+</html>

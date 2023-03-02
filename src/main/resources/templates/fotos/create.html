@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<th:block th:replace="~{fragments :: head}"></th:block>
+<title>Create page</title>
+</head>
+<body>
+<div class="container">
+
+		<div>
+			<a th:href="@{/foto}"> <button type="button" class="btn btn-primary">Menù</button></a>
+		</div>
+
+	<form id="foto-form" th:object="${foto}" th:action="@{/foto/create}" method="post">
+		
+		
+		
+		<div class="mb-3">
+  			<label for="titolo" class="form-label">titolo</label>
+  			<input type="text" class="form-control" id="titolo" th:field="*{titolo}" th:errorClass="is-invalid" placeholder="Titolo">
+  			
+  			<div th:if="${#fields.hasErrors('Titolo')}" class="invalid-feedback">
+			<ul>
+			   <li th:each="err : ${#fields.errors('Titolo')}" th:text="${err}"></li>
+			</ul>
+  			</div>
+  			
+  			
+		</div>
+		<div class="mb-3">
+  			<label for="descrizione" class="form-label">Descrizione</label>
+  			<input type="text" class="form-control" id="descrizione" th:field="*{descrizione}" th:errorClass="is-invalid" placeholder="Descrizione">
+  			
+  			<div th:if="${#fields.hasErrors('descrizione')}" class="invalid-feedback">
+			<ul>
+			   <li th:each="err : ${#fields.errors('descrizione')}" th:text="${err}"></li>
+			</ul>
+  			</div>
+  			
+		</div>
+	
+		<div class="mb-3">
+  			<label for="foto" class="form-label">Foto</label>
+  			<input type="text" class="form-control" id="foto" th:field="*{urlFoto}" placeholder="Inserisci URL">
+		</div>
+		<div class="mb-3">
+  			<label for="tag" class="form-label">Tag</label>
+  			<input type="text" class="form-control" id="prezzo" th:field="*{Tag}" th:errorClass="is-invalid" placeholder="Tag">
+  			
+  			<div th:if="${#fields.hasErrors('tag')}" class="invalid-feedback">
+			<ul>
+			   <li th:each="err : ${#fields.errors('tag')}" th:text="${err}"></li>
+			</ul>
+  			</div>
+  			
+  			</div>
+  			<div class="mb-3">
+  				
+  				<div class="form-check form-switch">
+				  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  th:field="*{visibile}" th:errorClass="is-invalid">
+				  <label class="form-check-label" for="flexSwitchCheckDefault">Visibile</label>
+				</div>
+  			
+  			</div>
+  			
+  			
+  			
+  			<div class="mb-3">
+				<h3>Categorie</h3>
+				<div class="d-flex justify-content-between">
+				<div th:each="cat : ${listaCategorie}" class="form-check ">
+					<input type="checkbox" class="form-check-input"
+						th:value="${cat.id}" th:field="*{categorie}"> <label
+						class="form-check-box" th:text="${cat.nome}"></label>
+				</div>
+				</div>
+				</div>
+  			
+  			
+  			
+  			
+		
+		
+		<div class="mb-3 row d-flex " >
+  			<button class="btn btn-primary justify-content-center" type="submit">Crea </button>
+		</div>
+		
+		
+		
+	</form>
+	
+
+</div>
+
+</body>
+</html>
