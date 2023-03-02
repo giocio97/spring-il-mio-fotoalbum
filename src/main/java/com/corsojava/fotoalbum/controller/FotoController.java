@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,8 @@ import com.corsojava.fotoalbum.model.Categoria;
 import com.corsojava.fotoalbum.model.Foto;
 import com.corsojava.fotoalbum.repository.CategoriaRepository;
 import com.corsojava.fotoalbum.repository.FotoRepository;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/foto")
@@ -67,7 +70,11 @@ public class FotoController {
 	}
 
 	@PostMapping("/create")
-	public String store(@ModelAttribute("foto") Foto formFoto) {
+	public String store(@Valid @ModelAttribute("foto") Foto formFoto, BindingResult bindingResult, Model model) {
+
+		if (bindingResult.hasErrors())
+			return "fotos/create";
+
 		fotoRepo.save(formFoto);
 		return "redirect:/foto";
 	}
@@ -84,7 +91,11 @@ public class FotoController {
 	}
 
 	@PostMapping("/edit/{id}")
-	public String update(@ModelAttribute("foto") Foto formFoto) {
+	public String update(@Valid @ModelAttribute("foto") Foto formFoto, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors())
+			return "fotos/edit";
+
 		fotoRepo.save(formFoto);
 		return "redirect:/foto";
 	}

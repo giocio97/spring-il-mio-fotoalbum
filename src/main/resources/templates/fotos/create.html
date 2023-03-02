@@ -20,9 +20,9 @@
   			<label for="titolo" class="form-label">titolo</label>
   			<input type="text" class="form-control" id="titolo" th:field="*{titolo}" th:errorClass="is-invalid" placeholder="Titolo">
   			
-  			<div th:if="${#fields.hasErrors('Titolo')}" class="invalid-feedback">
+  			<div th:if="${#fields.hasErrors('titolo')}" class="invalid-feedback">
 			<ul>
-			   <li th:each="err : ${#fields.errors('Titolo')}" th:text="${err}"></li>
+			   <li th:each="err : ${#fields.errors('titolo')}" th:text="${err}"></li>
 			</ul>
   			</div>
   			
@@ -42,7 +42,7 @@
 	
 		<div class="mb-3">
   			<label for="foto" class="form-label">Foto</label>
-  			<input type="text" class="form-control" id="foto" th:field="*{urlFoto}" placeholder="Inserisci URL">
+  			<input type="text" class="form-control" id="foto" th:field="*{urlFoto}" th:errorClass="is-invalid" placeholder="Inserisci URL">
 		</div>
 		<div class="mb-3">
   			<label for="tag" class="form-label">Tag</label>
