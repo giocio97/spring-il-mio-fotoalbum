@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<th:block th:replace="~{fragments :: head}"></th:block>
+<title>Create page</title>
+</head>
+<body>
+<div class="container">
+
+		<div>
+			<a th:href="@{/foto}"> <button type="button" class="btn btn-primary">Menù</button></a>
+		</div>
+
+	<form id="ingrediente-form" th:object="${categoria}" th:action="@{/categorie/create}" method="post">
+		
+		
+		
+		<div class="mb-3">
+  			<label for="nome" class="form-label">Nome Categoria</label>
+  			<input type="text" class="form-control" id="nome" th:field="*{nome}" th:errorClass="is-invalid" placeholder="Nome Categoria">
+  			
+  			
+  			
+  			
+		</div>
+	
+		
+		<div class="mb-3 row d-flex " >
+  			<button class="btn btn-primary justify-content-center" type="submit">Crea Categoria</button>
+		</div>
+		
+		
+		
+	</form>
+	
+
+</div>
+
+</body>
+</html>

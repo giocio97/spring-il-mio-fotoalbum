@@ -40,6 +40,7 @@ public class FotoController {
 			elencoFoto = fotoRepo.findAll();
 		} else {
 			elencoFoto = fotoRepo.findByTitoloLike("%" + titolo + "%");
+//			elencoFoto = fotoRepo.findByTagLike("%"+ tag + "%");
 		}
 
 		model.addAttribute("elencoFoto", elencoFoto);

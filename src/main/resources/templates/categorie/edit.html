@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<th:block th:replace="~{fragments :: head}"></th:block>
+<title>Modifica Pizza</title>
+</head>
+<body>
+<div class="container">
+
+		
+
+	<form id="pizza-form" th:object="${categoria}" th:action="@{/categorie/edit/{id}(id=${categoria.id})}" method="post">
+		
+		
+		
+			<div class="mb-3">
+  			<label for="nome" class="form-label">Nome Categoria</label>
+  			<input type="text" class="form-control" id="nome" th:field="*{nome}" th:errorClass="is-invalid" placeholder="Nome Categoria">
+  			
+  			
+  			
+  			
+			</div>
+			
+			<div class="container text-center">
+		  		<div class="row justify-content-md-center">
+				    	<div class="col col-lg-2">
+				     		<button class="btn btn-outline-success" type="submit"> Modifica Categoria</button>
+					    </div>
+			    	<div class="col-md-auto">
+			     		<a th:href="@{/categorie}" class="btn btn-danger">Annulla</a>
+			    	</div>
+		    
+	    		</div>
+	    	</div>
+		
+		
+		
+		
+	</form>
+	
+
+</div>
+
+</body>
+</html>
