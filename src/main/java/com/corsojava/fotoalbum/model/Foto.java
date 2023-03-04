@@ -2,11 +2,13 @@ package com.corsojava.fotoalbum.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -34,6 +36,9 @@ public class Foto {
 	private String urlFoto;
 	private String tag;
 	private boolean visibile;
+
+	@OneToMany(mappedBy = "foto", cascade = CascadeType.ALL)
+	List<Commento> commenti;
 
 	@ManyToMany
 	private List<Categoria> categorie;
@@ -92,6 +97,14 @@ public class Foto {
 
 	public void setCategorie(List<Categoria> categorie) {
 		this.categorie = categorie;
+	}
+
+	public List<Commento> getCommenti() {
+		return commenti;
+	}
+
+	public void setCommenti(List<Commento> commenti) {
+		this.commenti = commenti;
 	}
 
 }

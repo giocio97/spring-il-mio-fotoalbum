@@ -2,6 +2,11 @@ package com.corsojava.fotoalbum.model;
 
 import java.util.List;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +22,9 @@ public class Categoria {
 
 	private String nome;
 
+	@JsonBackReference
 	@ManyToMany(mappedBy = "categorie")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Foto> fotos;
 
 	public Integer getId() {
