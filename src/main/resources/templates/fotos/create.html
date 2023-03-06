@@ -8,9 +8,7 @@
 <body>
 <div class="container">
 
-		<div>
-			<a th:href="@{/foto}"> <button type="button" class="btn btn-primary">Menù</button></a>
-		</div>
+		<nav th:replace="~{fragments :: navbar-admin}"></nav>
 
 	<form id="foto-form" th:object="${foto}" th:action="@{/foto/create}" method="post">
 		

@@ -1,5 +1,5 @@
 fotoList();
-
+const inputSearch = document.getElementById(`search-input`);
 function fotoList(){
     axios.get(`http://localhost:8080/api/foto`)
     .then((result) =>{
@@ -22,5 +22,29 @@ function fotoList(){
     }).catch((result) => {
         console.error('Errore nella richiesta', result);
         alert('Errore durante la richiesta');
+    })
+};
+
+ricercaFoto();
+function ricercaFoto(){
+    const filter = inputSearch.value;
+    axios.get(`http://localhost:8080/api/foto?search=http://localhost:8080/api/foto?search=${filter}`)
+    .then((result) =>{
+        const fotos = result.data;
+        document.querySelector('#foto-card').innerHTML+``;
+        fotos.forEach(foto => {
+            document.querySelector('#foto-card').innerHTML+=`
+            
+              <div class="col">
+              <div class="card h-100">
+                <img src="${foto.urlFoto}" class="card-img-top" alt="${foto.titolo}">
+                <div class="card-body">
+                  <h5 class="card-title">${foto.titolo}</h5>
+                 <a href="/dettaglio?id=${foto.id}" class="btn btn-primary">Mostra Dettaglio</a>
+                </div>
+                
+              </div>
+              `;
+        });
     })
 }

@@ -8,7 +8,7 @@
 <body>
 <div class="container">
 
-		
+		<nav th:replace="~{fragments :: navbar-admin}"></nav>
 
 	<form id="pizza-form" th:object="${foto}" th:action="@{/foto/edit/{id}(id=${foto.id})}" method="post">
 		
