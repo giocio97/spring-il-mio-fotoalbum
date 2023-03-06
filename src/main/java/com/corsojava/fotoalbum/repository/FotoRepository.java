@@ -8,7 +8,6 @@ import com.corsojava.fotoalbum.model.Foto;
 
 public interface FotoRepository extends JpaRepository<Foto, Integer> {
 
-	public List<Foto> findByTitoloLike(String titolo);
+	public List<Foto> findByTitoloLikeOrTagLike(String titolo, String tag);
 
-	public List<Foto> findByTagLike(String tag);
 }

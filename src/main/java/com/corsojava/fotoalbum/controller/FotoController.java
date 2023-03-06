@@ -32,15 +32,15 @@ public class FotoController {
 	CategoriaRepository cateRepo;
 
 	@GetMapping
-	public String index(@RequestParam(name = "titolo", required = false) String titolo, Model model) {
+	public String index(@RequestParam(name = "search", required = false) String keyword, Model model) {
 
 		List<Foto> elencoFoto;
 
-		if (titolo == null) {
+		if (keyword == null) {
 			elencoFoto = fotoRepo.findAll();
 		} else {
-			elencoFoto = fotoRepo.findByTitoloLike("%" + titolo + "%");
-//			elencoFoto = fotoRepo.findByTagLike("%"+ tag + "%");
+			elencoFoto = fotoRepo.findByTitoloLikeOrTagLike("%" + keyword + "%", "%" + keyword + "%");
+
 		}
 
 		model.addAttribute("elencoFoto", elencoFoto);

@@ -32,12 +32,12 @@ public class ApiFotoController {
 	CommentoRepository comRepo;
 
 	@GetMapping
-	public List<Foto> index(@RequestParam(name = "titolo", required = false) String titolo) {
+	public List<Foto> index(@RequestParam(name = "search", required = false) String keyword) {
 		List<Foto> photos;
-		if (titolo == null) {
+		if (keyword == null) {
 			photos = fotoRepo.findAll();
 		} else {
-			photos = fotoRepo.findByTitoloLike("%" + titolo + "%");
+			photos = fotoRepo.findByTitoloLikeOrTagLike("%" + keyword + "%", "%" + keyword + "%");
 		}
 		return (List<Foto>) photos.stream().filter(Foto::isVisibile).collect(Collectors.toList());
 	}
